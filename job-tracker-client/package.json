@@ -12,6 +12,7 @@
     "@types/react-dom": "^17.0.11",
     "axios": "^0.24.0",
     "formik": "^2.2.9",
+    "formik-semantic-ui-react": "^2.0.0",
     "mobx-react-lite": "^3.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,7 +20,8 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.4",
     "typescript": "^4.5.2",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

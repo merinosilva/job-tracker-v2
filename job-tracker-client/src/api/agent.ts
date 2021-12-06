@@ -14,15 +14,24 @@ const Countries = {
 }
 
 const Cities = {
-    listAllOf : ( countryRef : string ) => axios.get<{_embedded : {city : City[] }}>( countryRef + '/cities').then(responseBody).then((data)=> data._embedded.city)
+    listAllOf : ( countryRef : string ) => axios.get<{_embedded : {city : City[] }}>( countryRef + '/cities').then(responseBody).then((data)=> data._embedded.city),
+    post : ( city : City ) => axios.post<City>('http://localhost:8080/api/city', city).then(responseBody),
+    patch : ( city : City, ref : string ) => axios.patch<City>(ref, city).then(responseBody),
+    put : ( cityRef : string, countryRef : string) => axios.put( cityRef + '/country', countryRef, {headers:{'Content-Type': 'text/uri-list'}})
 }
 
 const Companies = {
-    listAllOf : ( cityRef : string ) => axios.get<{_embedded : {company : Company[] }}>( cityRef + '/companies').then(responseBody).then((data)=> data._embedded.company)
+    listAllOf : ( cityRef : string ) => axios.get<{_embedded : {company : Company[] }}>( cityRef + '/companies').then(responseBody).then((data)=> data._embedded.company),
+    post : ( company : Company ) => axios.post<Company>('http://localhost:8080/api/company', company).then(responseBody),
+    patch : ( company : Company, ref : string ) => axios.patch<Company>(ref, company).then(responseBody),
+    put : ( companyRef : string, cityRef : string) => axios.put( companyRef + '/city', cityRef, {headers:{'Content-Type': 'text/uri-list'}})
 }
 
 const Applications = {
-    listAllOf : ( companyRef : string ) => axios.get<{_embedded : {application : Application[] }}>( companyRef + '/applications').then(responseBody).then((data)=> data._embedded.application)
+    listAllOf : ( companyRef : string ) => axios.get<{_embedded : {application : Application[] }}>( companyRef + '/applications').then(responseBody).then((data)=> data._embedded.application),
+    post : ( application : Application ) => axios.post<Application>('http://localhost:8080/api/application', application).then(responseBody),
+    patch : ( application : Application, ref : string ) => axios.patch<Application>(ref, application).then(responseBody),
+    put : ( applicationRef : string, companyRef : string) => axios.put( applicationRef + '/company', companyRef, {headers:{'Content-Type': 'text/uri-list'}})
 }
 
 const agent = {

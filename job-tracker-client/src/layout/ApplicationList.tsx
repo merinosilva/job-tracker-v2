@@ -4,7 +4,12 @@ import { useStore } from "../store/store";
 
 export default observer(function ApplicationList() {
   const { dataStore } = useStore();
-  const { applicationList, setEditingApplication } = dataStore;
+  const { applicationList, setEditingApplication, editingCompany } = dataStore;
+
+  if(editingCompany._links === undefined)
+  {
+    return ( <h3>Save the company to add applications.</h3>);
+  }
 
   return (
     <>

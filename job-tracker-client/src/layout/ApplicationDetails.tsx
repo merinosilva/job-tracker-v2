@@ -1,50 +1,50 @@
+import { Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
-import {
-  Button,
-  Form,
-  Grid,
-  TextArea,
-} from "semantic-ui-react";
+import { Button, Grid } from "semantic-ui-react";
 import { useStore } from "../store/store";
+import * as Yup from "yup";
+import { Form, Input, SubmitButton, TextArea } from "formik-semantic-ui-react";
 
 export default observer(function ApplicationDetails() {
   const { dataStore } = useStore();
-  const { editingApplication } = dataStore;
+  const { editingApplication, saveApplication } = dataStore;
 
+  const valSchema = Yup.object({
+    position: Yup.string().required("Position is required."),
+  });
   return (
-    <>
-      <Grid>
-        <Grid.Column width="8">
-          <h3>{editingApplication.position} details</h3>
-        </Grid.Column>
-        <Grid.Column width="6">
-          <Button floated="right" negative>
-            Delete
-          </Button>
-          <Button floated="right" positive>
-            Save
-          </Button>
-        </Grid.Column>
-      </Grid>
+    <Formik
+      initialValues={editingApplication}
+      validationSchema={valSchema}
+      onSubmit={(values, { setSubmitting }) => {
+        saveApplication({
+          position: values.position,
+          jobUrl: values.jobUrl,
+          requirements: values.requirements,
+          salary: values.salary
+        }).then(() => setSubmitting(false));
+      }}
+    >
       <Form>
-        <Form.Field>
-          <label>Position</label>
-          <input value={editingApplication.position} />
-        </Form.Field>
-        <Form.Field>
-          <label>Website</label>
-          <TextArea value={editingApplication.jobUrl} />
-        </Form.Field>
-        <Form.Field>
-          <label>Youtube Channel</label>
-          <TextArea value={editingApplication.requirements} />
-        </Form.Field>
-        <Form.Field>
-          <label>Business Area</label>
-          <TextArea value={editingApplication.salary} />
-        </Form.Field>
+        <Grid>
+          <Grid.Column width="11">
+            <h1>{editingApplication.position}</h1>
+          </Grid.Column>
+          <Grid.Column width="3">
+            <SubmitButton primary>Save</SubmitButton>
+          </Grid.Column>
+          <Grid.Column width="2">
+            <Button floated="right" negative>
+              Delete
+            </Button>
+          </Grid.Column>
+        </Grid>
+        <Input name="position" label="Position" placeholder="Position" />
+        <Input name="jobUrl" label="Job Post" placeholder="Job Post URL" />
+        <Input name="salary" label="Salary" placeholder="Salary" />
+        <TextArea name="requirements" label="Qualifications" placeholder="Qualifications" />
       </Form>
-    </>
+    </Formik>
   );
 });

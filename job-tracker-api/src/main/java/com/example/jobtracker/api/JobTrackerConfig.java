@@ -11,7 +11,7 @@ public class JobTrackerConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         cors.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET", "PUT", "DELETE", "POST")
+                .allowedMethods("GET", "PUT", "DELETE", "POST", "PATCH")
                 .allowCredentials(false).maxAge(3600);
     }
 }

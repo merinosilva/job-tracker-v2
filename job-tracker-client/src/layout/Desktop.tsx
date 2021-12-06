@@ -17,7 +17,7 @@ export default observer(function Desktop() {
   if (editingType === "") {
     return (
       <Grid>
-        <Grid.Column width="8">
+        <Grid.Column width="9">
           <CountryList />
         </Grid.Column>
       </Grid>
@@ -26,7 +26,7 @@ export default observer(function Desktop() {
   if (editingType === "A") {
     return (
       <Grid>
-        <Grid.Column width="8">
+        <Grid.Column width="9">
           <ApplicationDetails />
         </Grid.Column>
       </Grid>

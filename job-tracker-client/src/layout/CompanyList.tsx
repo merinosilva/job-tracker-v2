@@ -4,8 +4,12 @@ import { useStore } from "../store/store";
 
 export default observer(function CompanyList() {
   const { dataStore } = useStore();
-  const { companyList, setEditingCompany } = dataStore;
+  const { companyList, setEditingCompany, editingCity } = dataStore;
 
+  if(editingCity._links === undefined)
+  {
+    return ( <h3>Save the city to add companies.</h3>);
+  }
   return (
     <>
       <Grid>
