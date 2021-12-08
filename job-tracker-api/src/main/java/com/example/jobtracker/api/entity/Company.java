@@ -11,12 +11,19 @@ public class Company {
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
+    @Column(length = 500)
     private String name;
+    @Column(length = 500)
     private String website;
+    @Column(length = 500)
     private String youtubeChnl;
+    @Column(length = 2000)
     private String businessArea;
+    @Column(length = 2000)
     private String keyTechnologies;
+    @Column(length = 2000)
     private String devPractices;
+    @Column(length = 2000)
     private String keyNotes;
     @OneToMany(mappedBy = "company")
     private List<Application> applications;

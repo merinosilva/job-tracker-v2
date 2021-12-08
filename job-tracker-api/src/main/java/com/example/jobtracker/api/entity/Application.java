@@ -11,12 +11,18 @@ public class Application {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+    @Column(length = 500)
     private String position;
+    @Column(length = 500)
     private String jobUrl;
+    @Column(length = 2000)
     private String requirements;
+    @Column(length = 500)
     private String salary;
     private Date appliedDate;
+    @Column(length = 500)
     private String status;
+    @Column(length = 2000)
     private String notes;
 
     public Application() {

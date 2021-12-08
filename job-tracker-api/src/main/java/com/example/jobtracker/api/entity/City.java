@@ -11,10 +11,15 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
+    @Column(length = 500)
     private String name;
+    @Column(length = 2000)
     private String weather;
+    @Column(length = 2000)
     private String economy;
+    @Column(length = 2000)
     private String jobOpportunities;
+    @Column(length = 2000)
     private String specialNotes;
     @OneToMany(mappedBy = "city")
     private List<Company> companies;

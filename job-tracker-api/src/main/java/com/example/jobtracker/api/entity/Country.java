@@ -8,10 +8,15 @@ public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 500)
     private String name;
+    @Column(length = 2000)
     private String weather;
+    @Column(length = 2000)
     private String economy;
+    @Column(length = 2000)
     private String jobOpportunities;
+    @Column(length = 2000)
     private String specialNotes;
 
     @OneToMany(mappedBy = "country")
