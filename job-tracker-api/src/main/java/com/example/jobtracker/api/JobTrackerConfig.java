@@ -5,6 +5,9 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+/**
+ * Test commit
+ */
 @Component
 public class JobTrackerConfig implements RepositoryRestConfigurer {
     @Override
