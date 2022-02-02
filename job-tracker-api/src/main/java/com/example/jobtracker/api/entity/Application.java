@@ -1,7 +1,7 @@
 package com.example.jobtracker.api.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Application {
@@ -19,7 +19,7 @@ public class Application {
     private String requirements;
     @Column(length = 500)
     private String salary;
-    private Date appliedDate;
+    private LocalDate appliedDate;
     @Column(length = 500)
     private String status;
     @Column(length = 2000)
@@ -76,11 +76,11 @@ public class Application {
         this.salary = salary;
     }
 
-    public Date getAppliedDate() {
+    public LocalDate getAppliedDate() {
         return appliedDate;
     }
 
-    public void setAppliedDate(Date appliedDate) {
+    public void setAppliedDate(LocalDate appliedDate) {
         this.appliedDate = appliedDate;
     }
 
